@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import java.lang.Math.abs
 import java.util.*
 
@@ -17,6 +20,13 @@ class MainActivity : AppCompatActivity() {
 
     fun start(){
         setContentView(R.layout.activity_start)
+
+        MobileAds.initialize(this) {}
+        val adview : AdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adview.loadAd(adRequest)
+        println(adview)
+
         val tv_pnum: TextView = findViewById(R.id.tv_pnum)
         val btn_minus : Button = findViewById(R.id.btn_minus)
         val btn_plus : Button = findViewById(R.id.btn_plus)
@@ -24,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val btn_blind : Button = findViewById(R.id.btn_blind)
 
         btn_blind.setOnClickListener{
-            println(isBlind)
             isBlind = !isBlind
             if (isBlind == true){
                 btn_blind.text = "BLIND 모드 ON"
@@ -55,6 +64,13 @@ class MainActivity : AppCompatActivity() {
 
     fun main(){
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) {}
+        val adview3 : AdView = findViewById(R.id.adView3)
+        val adRequest = AdRequest.Builder().build()
+        adview3.loadAd(adRequest)
+
+
         var timerTask: Timer? = null
         var stage = 1
         var sec : Int = 0
@@ -74,7 +90,6 @@ class MainActivity : AppCompatActivity() {
             color_index = 3
         }
         val color_sel = color_list.get(color_index)
-        println(color_sel)
         bg_main.setBackgroundColor(Color.parseColor(color_sel))
 
         tv.text = ((num.toFloat())/100).toString()
@@ -124,6 +139,12 @@ class MainActivity : AppCompatActivity() {
 
     fun end(){
         setContentView(R.layout.activity_end)
+
+        MobileAds.initialize(this) {}
+        val adview2 : AdView = findViewById(R.id.adView2)
+        val adRequest = AdRequest.Builder().build()
+        adview2.loadAd(adRequest)
+
         val tv_last: TextView = findViewById(R.id.tv_last)
         val tv_lpoint: TextView = findViewById(R.id.tv_lpoint)
         val btn_init: Button = findViewById(R.id.btn_init)
